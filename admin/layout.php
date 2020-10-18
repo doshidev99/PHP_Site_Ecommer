@@ -16,6 +16,8 @@ include '../connected.php';
 
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="<?= $ADMIN_URL ?>/assets/plugins/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="<?= $ADMIN_URL ?>/assets/plugins/datatables/datatables.min.css">
+	<link rel="stylesheet" href="<?= $ADMIN_URL ?>/assets/css/select2.min.css">
 
 	<!-- Fontawesome CSS -->
 	<link rel="stylesheet" href="<?= $ADMIN_URL ?>/assets/plugins/fontawesome/css/fontawesome.min.css">
@@ -30,12 +32,13 @@ include '../connected.php';
 
 </head>
 
-<body class="mini-sidebar">
+<!-- <body class="mini-sidebar"> -->
+<body class="">
 	<div class="main-wrapper">
 
 		<?php require 'menu.php'; ?>
 
-		<div class="container">
+		<div class="container-fluid">
 			<?php
 			require $VIEW_NAME;
 			?>
@@ -51,6 +54,10 @@ include '../connected.php';
 
 	<!-- Slimscroll JS -->
 	<script src="<?= $ADMIN_URL ?>/assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+	<script src="<?= $ADMIN_URL ?>/assets/js/select2.min.js"></script>
+	<script src="<?= $ADMIN_URL ?>/assets/plugins/datatables/jquery.dataTables.min.js"></script>
+	<script src="<?= $ADMIN_URL ?>/assets/plugins/datatables/datatables.min.js"></script>
 
 	<!-- Custom JS -->
 	<script src="<?= $ADMIN_URL ?>/assets/js/admin.js"></script>

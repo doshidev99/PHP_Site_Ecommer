@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="0edbe1e6-999a-4add-9b29-1b4b170fbfbc" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/admin/assets/img/product/product-01.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/auth/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/auth/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/home/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/home/home.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/home/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/home/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/layout.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/layout.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/menu.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/menu.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/global.php" beforeDir="false" afterPath="$PROJECT_DIR$/global.php" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1izaIQiE54DsYUMF5PQzm0JMvXs" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0edbe1e6-999a-4add-9b29-1b4b170fbfbc" name="Default Changelist" comment="" />
+      <created>1602912793929</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1602912793929</updated>
+      <workItem from="1602912795392" duration="153000" />
+      <workItem from="1602996444718" duration="7198000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="157" y="50" key="SettingsEditor" timestamp="1602997882788">
+      <screen x="31" y="23" width="1249" height="777" />
+    </state>
+    <state x="157" y="50" key="SettingsEditor/31.23.1249.777@31.23.1249.777" timestamp="1602997882788" />
+    <state x="320" y="124" width="670" height="676" key="search.everywhere.popup" timestamp="1603002402437">
+      <screen x="31" y="23" width="1249" height="777" />
+    </state>
+    <state x="320" y="124" width="670" height="676" key="search.everywhere.popup/31.23.1249.777@31.23.1249.777" timestamp="1603002402437" />
+  </component>
+</project>

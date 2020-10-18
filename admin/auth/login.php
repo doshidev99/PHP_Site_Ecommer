@@ -5,29 +5,25 @@ include '../../connected.php';
 ?>
 
 <?php
-if (!$_SESSION['name-admin']) {
+$db->checkLogin();
+if (isset($_POST['login'])) {
+	$user_name = $_POST['username'];
+	$cl_password = $_POST['password'];
 
-	if (isset($_POST['login'])) {
-		$user_name = $_POST['username'];
-		$cl_password = $_POST['password'];
+	if ($user_name == '' || $cl_password == '') {
+		$_SESSION["isLogin"] = "Tài khoản và mật khẩu không được để trống!";
+	} else {
 
-		if ($user_name == '' || $cl_password == '') {
-			$_SESSION["isLogin"] = "Tài khoản và mật khẩu không được để trống!";
+		$sql = "SELECT * FROM administrations WHERE username='$user_name' AND password='$cl_password' ";
+		$db->execute($sql);
+
+		if ($db->num_rows() > 0) {
+			header('location: ../home/index.php');
+			$_SESSION['name-admin'] = 'admin';
 		} else {
-
-			$sql = "SELECT * FROM administrations WHERE username='$user_name' AND password='$cl_password' ";
-			$db->execute($sql);
-
-			if ($db->num_rows() > 0) {
-				header('location: ../home/index.php');
-				$_SESSION['name-admin'] = 'admin';
-			} else {
-				$_SESSION["isLogin"] = "Tài khoản hoặc mật khẩu sai!";
-			}
+			$_SESSION["isLogin"] = "Tài khoản hoặc mật khẩu sai!";
 		}
 	}
-} else {
-	header('location: home/index.php');
 }
 
 ?>
