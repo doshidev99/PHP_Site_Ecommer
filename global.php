@@ -1,6 +1,6 @@
 <?php
 session_start();
-$ROOT_URL = "/zyra";
+$ROOT_URL = "/Estate";
 $ADMIN_URL = "$ROOT_URL/admin";
 $SITE_URL = "$ROOT_URL/site";
 $PR_IMAGE = "$ADMIN_URL/assets/img/product";
@@ -10,7 +10,7 @@ class Database
     private $hostname = 'localhost';
     private $username = 'root';
     private $pass = 'root';
-    private $dbname = 'xshop';
+    private $dbname = 'estate';
 
     // private $conn = NULL;
     private $result = NULL;
@@ -143,7 +143,7 @@ class Database
     public function checkLogin()
     {
         if (isset($_SESSION['name-admin'])) {
-            header('location: home/index.php');
+            // header('location: home/index.php');
         }
     }
 

@@ -179,7 +179,8 @@
 		<div class="sidebar-inner slimscroll">
 			<div id="sidebar-menu" class="sidebar-menu">
 				<ul>
-					<li class="active">
+					<!-- <li class="active"> -->
+					<li>
 						<a href="../home/index.php"><i class="fas fa-columns"></i> <span>Dashboard</span></a>
 					</li>
 
@@ -190,7 +191,7 @@
 						<a href="../add/index.php"><i class="fas fa-plus"></i> <span> Thêm sản phẩm </span></a>
 					</li>
 					<li class="">
-						<a href="#"><i class="fas fa-shopping-bag"></i> <span> Quản lý đơn hàng </span></a>
+						<a href="#"><i class="fas fa-shopping-bag"></i> <span> Quản lý yêu cầu </span></a>
 					</li>
 
 					<li class="menu-title">

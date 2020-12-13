@@ -5,16 +5,16 @@ include '../../connected.php';
 ?>
 
 <?php
-$db->checkLogin();
+// $db->checkLogin();
 if (isset($_POST['login'])) {
-	$user_name = $_POST['username'];
+	$user_name = $_POST['email'];
 	$cl_password = $_POST['password'];
 
 	if ($user_name == '' || $cl_password == '') {
 		$_SESSION["isLogin"] = "Tài khoản và mật khẩu không được để trống!";
 	} else {
 
-		$sql = "SELECT * FROM administrations WHERE username='$user_name' AND password='$cl_password' ";
+		$sql = "SELECT * FROM customer WHERE email='$user_name' AND password='$cl_password' ";
 		$db->execute($sql);
 
 		if ($db->num_rows() > 0) {
@@ -31,7 +31,7 @@ if (isset($_POST['login'])) {
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-	<title>Truelysell | Template</title>
+	<title> Login with estate </title>
 
 	<!-- Favicons -->
 	<link rel="shortcut icon" href="<?= $ADMIN_URL ?>/assets/img/favicon.png">
@@ -64,13 +64,12 @@ if (isset($_POST['login'])) {
 							</div>
 						</div>
 						<div class="login-header">
-							<h3>Login <span>Truelysell</span></h3>
-							<p class="text-muted">Access to our dashboard</p>
+							<h3>Login <span>Estate</span></h3>
 						</div>
 						<form method="POST">
 							<div class="form-group">
 								<label class="control-label">Username</label>
-								<input name="username" class="form-control" type="text" placeholder="Enter your username">
+								<input name="email" class="form-control" type="text" placeholder="Enter your email">
 							</div>
 							<div class="form-group mb-4">
 								<label class="control-label">Password</label>
@@ -89,15 +88,15 @@ if (isset($_POST['login'])) {
 							?>
 						</form>
 
-						<div class="text-center forgot-pass mt-4"><a href="forgot-password.html">Forgot Password?</a></div>
+						<!-- <div class="text-center forgot-pass mt-4"><a href="forgot-password.html">Forgot Password?</a></div>
 						<div class="login-or">
 							<span class="or-line"></span>
 							<span class="span-or">or</span>
-						</div>
+						</div> -->
 
 						<!-- /Social Login -->
 
-						<div class="text-center dont-have">Don’t have an account? <a href="register.html">Register</a></div>
+						<!-- <div class="text-center dont-have">Don’t have an account? <a href="register.html">Register</a></div> -->
 					</div>
 				</div>
 			</div>

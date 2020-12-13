@@ -1,28 +1,33 @@
 <?php
 
 $category = $_GET['category'];
-$ma_hh = $_GET['id'];
+$id_product = $_GET['id'];
 
-if ($ma_hh) {
-  $isDone = $db->delete($ma_hh, 'ma_hh', 'hang_hoa');
+if ($id_product) {
+  $isDone = $db->delete($id_product, 'id_product', 'product');
   if ($isDone) {
     echo "<script>window.location.href = '../list/index.php' </script>";
   }
 }
 
+
 if ($category) {
-  $_data = $db->getDataWithCondition('hang_hoa', 'ma_loai', $category);
+  $_data = $db->getDataWithCondition('product', 'id_category', $category);
   $db->num_rows();
   if ($db->num_rows()) {
     $count_items = $db->num_rows();
   }
 } else {
-  $_data = $db->getAllData('hang_hoa');
+  $_data = $db->getAllData('product');
   $db->num_rows();
   if ($db->num_rows()) {
     $count_items = $db->num_rows();
   }
+  // $abc = "INSERT INTO `product`(`id_product`, `name_product`, `price`, `discount`, `image`, `date`, `description`, `id_category`, `special`, `bedRoom`, `bathRoom`, `area`, `parking`)
+  //  VALUES (null,'Cá voi',2000,0.2,'abc.png','2020-11-11','Phòng ốc đặc biệt',1,true,2,1,200,1)";
 }
+
+$_category = $db->getAllData('category');
 
 ?>
 <div class="page-wrapper">
@@ -31,7 +36,7 @@ if ($category) {
     <div class="page-header">
       <div class="row">
         <div class="col">
-          <h3 class="page-title">Danh sách sản phẩm</h3>
+          <h3 class="page-title">Danh sách Bất động sản</h3>
         </div>
         <div class="col-auto text-right">
           <a class="btn btn-white filter-btn" href="javascript:void(0);" id="filter_search">
@@ -49,10 +54,20 @@ if ($category) {
           <div class="row filter-row">
             <div class="col-sm-6 col-md-3">
               <div class="form-group">
-                <select name="category" style="border: none; border-radius: 3px" id="1">
-                  <option value="1">Áo</option>
-                  <option value="2">Quần</option>
-                  <option value="3">Phụ kiện</option>
+                <select name="category" style="border: none; border-radius: 3px" selected>
+                  <?php
+                  foreach ($_category as $category) {
+                  ?>
+                    <option value="<?php
+                                    echo $category['id_category']
+                                    ?>">
+                      <?php
+                      echo $category['name_category']
+                      ?>
+                    </option>
+
+
+                  <?php } ?>
                 </select>
               </div>
             </div>
@@ -93,7 +108,7 @@ if ($category) {
                     <th>STT</th>
                     <th>Tên Mặt hàng</th>
                     <th>Hình Ảnh</th>
-                    <th>Đơn giá</th>
+                    <th class="text-center">Đơn giá</th>
                     <th>Mô tả</th>
                     <th>Giảm Giá</th>
                     <th>Tình Trạng</th>
@@ -109,41 +124,54 @@ if ($category) {
                   ?>
                     <tr>
                       <td> <?php echo $stt; ?></td>
-                      <td> <?php echo $value['ten_hh']; ?></td>
+                      <td> <?php echo $value['name_product']; ?></td>
                       <td>
                         <span class="table-avatar">
                           <a href="#" class="avatar avatar-sm mr-2">
-                            <img class="avatar-img rounded-circle" alt="" src="<?= $PR_IMAGE ?>/<?php echo $value['hinh'] ?>">
+                            <img class="avatar-img rounded-circle" alt="" src="<?= $PR_IMAGE ?>/<?php echo $value['image'] ?>">
                           </a>
                         </span>
                       </td>
-                      <td>
-                        <?php echo $value['don_gia']; ?>
+                      <td class="text-center"> <?php echo $value['price']; ?>
                       </td>
-                      <td><?php echo $value['mo_ta']; ?></td>
-                      <td><?php echo (float)$value['giam_gia'] * 100 . "%" ?></td>
                       <td>
-                        <label class="badge badge-dark">
+                        <div style="
+                        display: inline-block;
+                        width: 200px;
+                        white-space: nowrap;
+                        overflow: hidden !important;
+                        text-overflow: ellipsis;
+                      ">
+
+                          <?php echo $value['description']; ?>
+                        </div>
+                      </td> 
+                      <td><?php echo (float)$value['discount'] * 100 . "%" ?></td>
+                      <td>
+                        <label class="badge">
                           <?php
-                          switch ($value['tinh_trang']) {
-                            case '0':
+                          switch ($value['status']) {
+                            case 0:
                               echo "<span class='text-danger'> Hết hàng <span>";
+
                               break;
-                            case '1':
+                            case 1:
                               echo "<span class='text-success'> còn hàng </span>";
                               break;
+
                             default:
                               break;
                           }
-                          ?></label>
+                          ?>
+                        </label>
                       </td>
 
                       <td>
-                        <div class="btn btn-danger">
-                          <a class="text-white" href="?id=<?php echo $value['ma_hh'] ?>"> Delete </a>
+                        <div class="btn btn-danger" style="width: 100px">
+                          <a class="text-white" href="?id=<?php echo $value['id_product'] ?>"> Delete </a>
                         </div>
-                        <div class="btn mt-3 btn-success">
-                          <a class="text-white" href="../edit/index.php?id=<?php echo $value['ma_hh'] ?>">
+                        <div class="btn btn-success mt-3" style="width: 100px">
+                          <a class="text-white" href="../edit/index.php?id=<?php echo $value['id_product'] ?>">
                             Edit
                           </a>
                         </div>

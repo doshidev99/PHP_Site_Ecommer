@@ -1,209 +1,199 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.3
+-- version 4.9.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Oct 18, 2020 at 08:00 AM
--- Server version: 5.7.26
--- PHP Version: 7.4.2
+-- Generation Time: Nov 19, 2020 at 07:46 AM
+-- Server version: 5.7.30
+-- PHP Version: 7.3.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 --
--- Database: `xshop`
+-- Database: `estate`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `administrations`
+-- Table structure for table `category`
 --
 
-CREATE TABLE `administrations` (
-  `id` int(11) NOT NULL,
-  `username` varchar(55) NOT NULL,
-  `password` varchar(55) NOT NULL
+CREATE TABLE `category` (
+  `id_category` int(11) NOT NULL,
+  `name_category` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `administrations`
+-- Dumping data for table `category`
 --
 
-INSERT INTO `administrations` (`id`, `username`, `password`) VALUES
-(1, 'admin', 'admin');
+INSERT INTO `category` (`id_category`, `name_category`) VALUES
+(1, 'home-stay');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `binh_luan`
+-- Table structure for table `comment`
 --
 
-CREATE TABLE `binh_luan` (
-  `ma_bl` int(11) NOT NULL,
-  `ma_kh` varchar(20) COLLATE utf8_bin NOT NULL,
-  `ma_hh` int(11) NOT NULL,
-  `noi_dung` varchar(100) COLLATE utf8_bin NOT NULL,
-  `ngay_bl` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+CREATE TABLE `comment` (
+  `id_comment` int(11) NOT NULL,
+  `content` varchar(2000) NOT NULL,
+  `id_category` int(11) NOT NULL,
+  `id_customer` int(11) NOT NULL,
+  `date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `hang_hoa`
+-- Table structure for table `customer`
 --
 
-CREATE TABLE `hang_hoa` (
-  `ma_hh` int(11) NOT NULL,
-  `ten_hh` varchar(60) COLLATE utf8_bin NOT NULL,
-  `don_gia` float NOT NULL,
-  `giam_gia` float NOT NULL,
-  `hinh` varchar(50) COLLATE utf8_bin NOT NULL,
-  `ma_loai` int(11) NOT NULL,
-  `dac_biet` bit(1) NOT NULL,
-  `so_luong` int(11) DEFAULT NULL,
-  `so_luot_xem` int(11) NOT NULL,
-  `ngay_nhap` date NOT NULL,
-  `mo_ta` varchar(2000) COLLATE utf8_bin DEFAULT NULL,
-  `tinh_trang` varchar(50) COLLATE utf8_bin DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+CREATE TABLE `customer` (
+  `id_customer` int(11) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `image` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `rule` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `hang_hoa`
+-- Dumping data for table `customer`
 --
 
-INSERT INTO `hang_hoa` (`ma_hh`, `ten_hh`, `don_gia`, `giam_gia`, `hinh`, `ma_loai`, `dac_biet`, `so_luong`, `so_luot_xem`, `ngay_nhap`, `mo_ta`, `tinh_trang`) VALUES
-(2, 'Quần Tây Âu', 2000, 0.2, 'product-15.jpg', 2, b'0', 200, 1000, '2020-10-18', 'a product from famous store!', '1');
+INSERT INTO `customer` (`id_customer`, `password`, `name`, `image`, `email`, `rule`) VALUES
+(1, 'admin', 'admin', 'admin.png', 'admin@gmail.com', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `khach_hang`
+-- Table structure for table `product`
 --
 
-CREATE TABLE `khach_hang` (
-  `ma_kh` varchar(20) COLLATE utf8_bin NOT NULL,
-  `mat_khau` varchar(50) COLLATE utf8_bin NOT NULL,
-  `ho_ten` varchar(50) COLLATE utf8_bin NOT NULL,
-  `email` varchar(50) COLLATE utf8_bin NOT NULL,
-  `hinh` varchar(50) COLLATE utf8_bin NOT NULL,
-  `kich_hoat` bit(1) NOT NULL,
-  `vai_tro` bit(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+CREATE TABLE `product` (
+  `id_product` int(11) NOT NULL,
+  `name_product` varchar(255) NOT NULL,
+  `price` float DEFAULT NULL,
+  `discount` float DEFAULT NULL,
+  `image` varchar(50) DEFAULT NULL,
+  `date` date NOT NULL,
+  `description` varchar(2000) NOT NULL,
+  `id_category` int(11) NOT NULL,
+  `special` tinyint(1) NOT NULL,
+  `bedRoom` int(11) NOT NULL,
+  `bathRoom` int(11) NOT NULL,
+  `area` float NOT NULL,
+  `parking` int(11) NOT NULL,
+  `status` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `khach_hang`
+-- Dumping data for table `product`
 --
 
-INSERT INTO `khach_hang` (`ma_kh`, `mat_khau`, `ho_ten`, `email`, `hinh`, `kich_hoat`, `vai_tro`) VALUES
-('DucNH', 'iloveyou', 'Nguyễn Hoàng Đức', 'ducnh@gmail.com', 'maxresdefault.jpg', b'1', b'0'),
-('HoaPT', 'iloveyou', 'PHẠM THỊ HÒA', 'hoapt@gmail.com', 'resus.jpg', b'1', b'1'),
-('teonv', 'iloveyou', 'Nguyễn Văn Tèo', 'teonv@gmail.com', 'messi.jpg', b'1', b'0');
+INSERT INTO `product` (`id_product`, `name_product`, `price`, `discount`, `image`, `date`, `description`, `id_category`, `special`, `bedRoom`, `bathRoom`, `area`, `parking`, `status`) VALUES
+(1, 'Cá voi', 2000, 0.2, 'test.jpg', '2020-11-11', 'Phòng ốc đặc biệt', 1, 1, 2, 1, 200, 1, 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `loai`
+-- Table structure for table `transaction`
 --
 
-CREATE TABLE `loai` (
-  `ma_loai` int(11) NOT NULL,
-  `ten_loai` varchar(50) COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
---
--- Dumping data for table `loai`
---
-
-INSERT INTO `loai` (`ma_loai`, `ten_loai`) VALUES
-(1, 'Áo'),
-(2, 'Quần'),
-(3, 'Phụ kiện'),
-(1002, 'Máy ảnh'),
-(1003, 'Điện thoại'),
-(1004, 'Nước hoa'),
-(1005, 'Nữ trang'),
-(1006, 'Nón thời trang'),
-(1007, 'Túi xách du lịch');
+CREATE TABLE `transaction` (
+  `id_transaction` int(11) NOT NULL,
+  `description` varchar(2000) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `phone` varchar(11) NOT NULL,
+  `id_customer` int(11) NOT NULL,
+  `id_product` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `administrations`
+-- Indexes for table `category`
 --
-ALTER TABLE `administrations`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `category`
+  ADD PRIMARY KEY (`id_category`);
 
 --
--- Indexes for table `binh_luan`
+-- Indexes for table `comment`
 --
-ALTER TABLE `binh_luan`
-  ADD PRIMARY KEY (`ma_bl`),
-  ADD KEY `FK_KhachHang_BinhLuan` (`ma_kh`),
-  ADD KEY `FK_HangHoa_BinhLuan` (`ma_hh`);
+ALTER TABLE `comment`
+  ADD PRIMARY KEY (`id_comment`),
+  ADD KEY `id_customer` (`id_customer`),
+  ADD KEY `id_category` (`id_category`);
 
 --
--- Indexes for table `hang_hoa`
+-- Indexes for table `customer`
 --
-ALTER TABLE `hang_hoa`
-  ADD PRIMARY KEY (`ma_hh`),
-  ADD KEY `FK_Loai_HangHoa` (`ma_loai`);
+ALTER TABLE `customer`
+  ADD PRIMARY KEY (`id_customer`);
 
 --
--- Indexes for table `khach_hang`
+-- Indexes for table `product`
 --
-ALTER TABLE `khach_hang`
-  ADD PRIMARY KEY (`ma_kh`);
+ALTER TABLE `product`
+  ADD PRIMARY KEY (`id_product`),
+  ADD KEY `id_category` (`id_category`);
 
 --
--- Indexes for table `loai`
+-- Indexes for table `transaction`
 --
-ALTER TABLE `loai`
-  ADD PRIMARY KEY (`ma_loai`);
+ALTER TABLE `transaction`
+  ADD PRIMARY KEY (`id_transaction`),
+  ADD KEY `id_customer` (`id_customer`),
+  ADD KEY `id_product` (`id_product`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `administrations`
+-- AUTO_INCREMENT for table `category`
 --
-ALTER TABLE `administrations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `category`
+  MODIFY `id_category` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `binh_luan`
+-- AUTO_INCREMENT for table `customer`
 --
-ALTER TABLE `binh_luan`
-  MODIFY `ma_bl` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `customer`
+  MODIFY `id_customer` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `hang_hoa`
+-- AUTO_INCREMENT for table `product`
 --
-ALTER TABLE `hang_hoa`
-  MODIFY `ma_hh` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `loai`
---
-ALTER TABLE `loai`
-  MODIFY `ma_loai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1008;
+ALTER TABLE `product`
+  MODIFY `id_product` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `binh_luan`
+-- Constraints for table `comment`
 --
-ALTER TABLE `binh_luan`
-  ADD CONSTRAINT `FK_HangHoa_BinhLuan` FOREIGN KEY (`ma_hh`) REFERENCES `hang_hoa` (`ma_hh`) ON DELETE CASCADE,
-  ADD CONSTRAINT `FK_KhachHang_BinhLuan` FOREIGN KEY (`ma_kh`) REFERENCES `khach_hang` (`ma_kh`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `comment`
+  ADD CONSTRAINT `comment_ibfk_1` FOREIGN KEY (`id_category`) REFERENCES `category` (`id_category`),
+  ADD CONSTRAINT `comment_ibfk_2` FOREIGN KEY (`id_customer`) REFERENCES `customer` (`id_customer`);
 
 --
--- Constraints for table `hang_hoa`
+-- Constraints for table `product`
 --
-ALTER TABLE `hang_hoa`
-  ADD CONSTRAINT `FK_Loai_HangHoa` FOREIGN KEY (`ma_loai`) REFERENCES `loai` (`ma_loai`) ON DELETE CASCADE;
+ALTER TABLE `product`
+  ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`id_category`) REFERENCES `category` (`id_category`);
+
+--
+-- Constraints for table `transaction`
+--
+ALTER TABLE `transaction`
+  ADD CONSTRAINT `transaction_ibfk_1` FOREIGN KEY (`id_customer`) REFERENCES `customer` (`id_customer`),
+  ADD CONSTRAINT `transaction_ibfk_2` FOREIGN KEY (`id_product`) REFERENCES `product` (`id_product`);

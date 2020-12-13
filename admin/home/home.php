@@ -1,11 +1,14 @@
 <?php
 
-$db->getAllData('khach_hang');
+$db->getAllData('customer');
 $db->num_rows();
 if ($db->num_rows()) {
 	$count_users = $db->num_rows();
+	$_data = 0;
 }
+
 ?>
+
 <div class="page-wrapper">
 	<div class="content container-fluid">
 
@@ -13,7 +16,9 @@ if ($db->num_rows()) {
 		<div class="page-header">
 			<div class="row">
 				<div class="col-12">
-					<h3 class="page-title">Welcome Admin!</h3>
+					<h3 class="page-title">Welcome <?php
+																					echo $_SESSION['name-admin'];
+																					?>!</h3>
 				</div>
 			</div>
 		</div>

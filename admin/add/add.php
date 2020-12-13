@@ -12,7 +12,11 @@ if (isset($_POST['add-product'])) {
 	$amount_product = $_POST['so_luong'];
 
 	$sql = "INSERT INTO `hang_hoa`(`ma_hh`, `ten_hh`, `don_gia`, `giam_gia`, `hinh`, `ma_loai`, `dac_biet`, `so_luong`, `so_luot_xem`, `ngay_nhap`, `mo_ta`, `tinh_trang`) VALUES (null, '$name_product', 	$price_product, $discount_product, '$image', $category_product, 0, $amount_product, 1000, '$current_date', '$description_product', '$status_product')";
-	$isDone = $db->execute($sql);
+	$isDone = $db->execute($sql);	
+
+
+	// $sql2 = "INSERT INTO `product`(`id_product`, `name_product`, `price`, `discount`, `image`, `date`, `description`, `id_category`, `special`, `bedRoom`, `bathRoom`, `area`, `parking`, `status`) 
+	// VALUES (null, 'Shop house ven đảo', 2.0000 , 0.3 ,'abc.png' ,'2020-11-11', 'descriptions',2, 1,2,2,170,2,1)"
 
 	if ($isDone) {
 		echo "<script>window.location.href = '../list/index.php' </script>";
@@ -61,6 +65,9 @@ if (isset($_POST['add-product'])) {
 									<option value="1">Áo</option>
 									<option value="2">Quần</option>
 									<option value="3">Phụ kiện</option>
+									<option value="4">Nam</option>
+									<option value="5">Nữ</option>
+									<option value="6">Trẻ Em</option>
 								</select>
 							</div>
 							<div class="from-group">
