@@ -26,14 +26,16 @@ if (isset($_POST['edit-product'])) {
 	$bedRoom = $_POST['bedRoom'];
 	$bathRoom = $_POST['bathRoom'];
 	$area = $_POST['area'];
-	$area = $_POST['parking'];
+	$parking = $_POST['parking'];
 
-	$sql = "UPDATE `product` SET `id_product`=$id_product,`name_product`='$name_product',`price`=$price,`discount`=$discount,`image`='$image',`id_category`=$id_category,`special`=true,`bedRoom`=$bedRoom,`bathRoom`=$bathRoom,`date`='$current_date', `area`=`$area`,`description`='$description',`status`=$status";
+	$sql =	"UPDATE `product` SET `name_product` = '$name_product', `price` = '$price_product', `discount` = '$discount_product', `image` = '$image', `date` = '$current_date', `description` = '$description_product', `bedRoom` = '$bedRoom', `bathRoom` = '$bathRoom', `area` = '$area', `parking` = '$parking', `status` = '$status_product' WHERE `product`.`id_product` = $id_product";
+
 	$isDone = $db->execute($sql);
 
-	$sql_temp = "UPDATE `product` SET `id_product`=[value-1],`name_product`=[value-2],`price`=[value-3],`discount`=[value-4],`image`=[value-5],`date`=[value-6],`description`=[value-7],`id_category`=[value-8],`special`=[value-9],`bedRoom`=[value-10],`bathRoom`=[value-11],`area`=[value-12],`parking`=[value-13],`status`=1 WHERE 1";
+
+	echo $name_product;
 	if ($isDone) {
-		echo "<script>window.location.href = '../list/index.php' </script>";
+		// echo "<script>window.location.href = '../list/index.php' </script>";
 	}
 }
 
@@ -65,7 +67,7 @@ $_category = $db->getAllData('category');
 							</div>
 							<div class="form-group">
 								<label>Giá sản phẩm</label>
-								<input name="price" value="<?php echo $_data['price'] ?>" placeholder="..." class="form-control" type="number" pattern="/\d/">
+								<input name="price" value="<?php echo $_data['price'] ?>" placeholder="..." class="form-control" type="text">
 							</div>
 							<div class="form-group">
 								<label>Giảm Giá (%)</label>
