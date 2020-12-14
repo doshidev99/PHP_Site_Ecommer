@@ -6,7 +6,7 @@ if (isset($_POST['add-product'])) {
 	$discount_product = (int)$_POST['discount'] / 100;
 	$description_product = $_POST['description'];
 	$image = $db->getNameFileImage('file') ? $db->getNameFileImage('file') : $_data['image'];
-	$category_product = $_POST['category_product'];
+	$category_product = $_POST['category'];
 	$status_product = $_POST['status'];
 	$current_date = date("Y/m/d");
 	$bedRoom = $_POST['bedRoom'];
@@ -18,10 +18,15 @@ if (isset($_POST['add-product'])) {
 	$sql = "INSERT INTO `product`(`id_product`, `name_product`, `price`, `discount`, `image`, `date`,
 	 `description`, `id_category`, `special`, `bedRoom`, `bathRoom`, `area`, `parking`, `status`)
 	  VALUES (null,'$name_product','$price_product','$discount_product','$image','$current_date','$description_product','$category_product','0','$bedRoom','$bathRoom','$area','$parking','$status_product')";
-	$isDone = $db->execute($sql);
+
+	$sql2 = "INSERT INTO `product`(`id_product`, `name_product`, `price`, `discount`, `image`, `date`, `description`,
+	 `id_category`, `special`, `bedRoom`, `bathRoom`, `area`, `parking`, `status`) 
+	 VALUES (null, '$name_product', '$price_product' , '$discount_product' ,'$image' ,'$current_date',
+	  '$description_product','$category_product', 1,'$bedRoom','$bathRoom','$area','$parking','$status_product')";
+
+	$isDone = $db->execute($sql2);
 
 
-	echo $name_product;
 	if ($isDone) {
 		// echo "<script>window.location.href = '../list/index.php' </script>";
 	}

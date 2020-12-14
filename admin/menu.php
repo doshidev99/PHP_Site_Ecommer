@@ -161,7 +161,6 @@
 					</span>
 				</a>
 				<div class="dropdown-menu dropdown-menu-right">
-					<a class="dropdown-item" href="admin-profile.html">Profile</a>
 					<a class="dropdown-item" href="../auth/logout.php">Logout</a>
 				</div>
 			</li>
@@ -191,14 +190,14 @@
 						<a href="../add/index.php"><i class="fas fa-plus"></i> <span> Thêm sản phẩm </span></a>
 					</li>
 					<li class="">
-						<a href="#"><i class="fas fa-shopping-bag"></i> <span> Quản lý yêu cầu </span></a>
+						<a href="../request"><i class="fas fa-shopping-bag"></i> <span> Quản lý yêu cầu </span></a>
 					</li>
 
 					<li class="menu-title">
 						<span>Pages</span>
 					</li>
 					<li>
-						<a href="admin-profile.html"><i class="fas fa-user-plus"></i> <span>Profile</span></a>
+						<a href="../chart"><i class="fas fa-chart-pie"></i> <span>Thống kê</span></a>
 					</li>
 				</ul>
 			</div>

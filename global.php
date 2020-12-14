@@ -127,6 +127,14 @@ class Database
 
     // Method searching - S -
 
+
+    public function countProductInCategory($type)
+    {
+        $sql = "SELECT * from `product` WHERE `id_category` = $type";
+
+        return $this->execute($sql);
+    }
+
     public function searchByKey($table, $column, $key)
     {
         $sql = "SELECT * FROM $table WHERE $column REGEXP '$key' ORDER BY id DESC";
@@ -159,8 +167,8 @@ class Database
 ?>
 
 
-<script>
-    $(function () {
+<!-- <script>
+    $(function() {
         $(".datepicker").datepicker({
             dateFormat: 'yy-mm-dd'
         });
@@ -168,4 +176,4 @@ class Database
     if (window.history.replaceState) {
         window.history.replaceState(null, null, window.location.href);
     }
-</script>
+</script> -->

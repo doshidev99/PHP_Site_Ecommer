@@ -30,9 +30,17 @@ include '../connected.php';
 	<!-- Main CSS -->
 	<link rel="stylesheet" href="<?= $ADMIN_URL ?>/assets/css/admin.css">
 
+	<script src="https://cdn.anychart.com/releases/v8/js/anychart-base.min.js"></script>
+	<script src="https://cdn.anychart.com/releases/v8/js/anychart-ui.min.js"></script>
+	<script src="https://cdn.anychart.com/releases/v8/js/anychart-exports.min.js"></script>
+	<link href="https://cdn.anychart.com/releases/v8/css/anychart-ui.min.css" type="text/css" rel="stylesheet">
+	<link href="https://cdn.anychart.com/releases/v8/fonts/css/anychart-font.min.css" type="text/css" rel="stylesheet">
+
+
 </head>
 
 <!-- <body class="mini-sidebar"> -->
+
 <body class="">
 	<div class="main-wrapper">
 

@@ -32,10 +32,8 @@ if (isset($_POST['edit-product'])) {
 
 	$isDone = $db->execute($sql);
 
-
-	echo $name_product;
 	if ($isDone) {
-		// echo "<script>window.location.href = '../list/index.php' </script>";
+		echo "<script>window.location.href = '../list/index.php' </script>";
 	}
 }
 
@@ -52,7 +50,7 @@ $_category = $db->getAllData('category');
 				<div class="page-header">
 					<div class="row">
 						<div class="col">
-							<h3 class="page-title">Sữa sản phẩm</h3>
+							<h3 class="page-title">Sửa sản phẩm</h3>
 						</div>
 					</div>
 				</div>
