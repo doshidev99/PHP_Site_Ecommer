@@ -66,7 +66,7 @@ if ($id) {
 				<div class="header-wrapper d-flex justify-content-between align-items-center">
 
 					<div class="header-logo">
-						<a href="index.html">
+						<a href="./home/index.php">
 							<img src="<?= $ROOT_URL ?>/assets/images/logo-black.png" alt="Logo">
 						</a>
 					</div>
@@ -79,7 +79,7 @@ if ($id) {
 									<li>
 										<a class="menu-title" href="#">Column #1</a>
 										<ul class="sub-mega-item">
-											<li><a href="index.html">Home 01</a></li>
+											<li><a href="./home/index.php">Home 01</a></li>
 											<li><a href="index-2.html">Home 02</a></li>
 											<li><a href="index-3.html">Home 03</a></li>
 											<li><a href="index-4.html">Home 04</a></li>
@@ -215,7 +215,7 @@ if ($id) {
 							<li>
 								<a href="#">Column #1</a>
 								<ul class="dl-submenu">
-									<li><a href="index.html">Home 01</a></li>
+									<li><a href="./home/index.php">Home 01</a></li>
 									<li><a href="index-2.html">Home 02</a></li>
 									<li><a href="index-3.html">Home 03</a></li>
 									<li><a href="index-4.html">Home 04</a></li>
@@ -418,7 +418,7 @@ if ($id) {
 		<div class="off-canvas-sidebar-wrapper">
 			<a class="sidebar-close" href="javascript:void(0)"><i class="fal fa-times"></i></a>
 			<div class="off-canvas-sidebar-box">
-				<a class="logo" href="index.html">
+				<a class="logo" href="./home/index.php">
 					<img src="<?= $ROOT_URL ?>/assets/images/logo-black.png" alt="Logo">
 				</a>
 				<p class="text">Curabitur placerat urna augue, id luctus sem imperdiet id. Nunc congue ac libero ut lacinia. In ultrices elementum ipsum, in tempus enim accumsan..</p>
@@ -477,7 +477,7 @@ if ($id) {
 			<div class="page-banner-content text-center">
 				<h2 class="title">Product simple</h2>
 				<ol class="breadcrumb justify-content-center">
-					<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+					<li class="breadcrumb-item"><a href="./home/index.php">Home</a></li>
 					<li class="breadcrumb-item"><a href="shop-sidebar.html">Shop</a></li>
 					<li class="breadcrumb-item active">Oversized Check Dress</li>
 				</ol>
@@ -902,7 +902,7 @@ if ($id) {
 				<div class="row">
 					<div class="col-lg-3">
 						<div class="footer-logo-copyright mt-30">
-							<a href="index.html">
+							<a href="./home/index.php">
 								<img src="assets/images/logo-white.png" alt="Logo">
 							</a>
 							<p>&copy; Copyright 2020 <a href="https://hasthemes.com/">HasThemes</a></p>

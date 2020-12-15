@@ -4,14 +4,17 @@
 include '../../connected.php';
 ?>
 
+
 <?php
+$error = '';
 // $db->checkLogin();
 if (isset($_POST['login'])) {
 	$user_name = $_POST['email'];
 	$cl_password = $_POST['password'];
 
 	if ($user_name == '' || $cl_password == '') {
-		$_SESSION["isLogin"] = "Tài khoản và mật khẩu không được để trống!";
+		// $_SESSION["isLogin"] = "Tài khoản và mật khẩu không được để trống!";
+		$error = "Tài khoản và mật khẩu không được để trống!";
 	} else {
 
 		$sql = "SELECT * FROM customer WHERE email='$user_name' AND password='$cl_password' ";
@@ -21,7 +24,8 @@ if (isset($_POST['login'])) {
 			header('location: ../home/index.php');
 			$_SESSION['name-admin'] = 'admin';
 		} else {
-			$_SESSION["isLogin"] = "Tài khoản hoặc mật khẩu sai!";
+			// $_SESSION["isLogin"] = "Tài khoản hoặc mật khẩu sai!";
+			$error = "Tài khoản hoặc mật khẩu sai!";
 		}
 	}
 }
@@ -81,9 +85,10 @@ if (isset($_POST['login'])) {
 
 							<?php
 
-							if ($_SESSION['isLogin']) {
-								echo "<p class='pt-3 text-center' style='color: purple'> 🍀" . $_SESSION['isLogin'] . "</p>";
-							}
+							// if ($_SESSION['isLogin']) {
+							// 	echo "<p class='pt-3 text-center' style='color: purple'> 🍀" . $_SESSION['isLogin'] . "</p>";
+							// }
+							echo $error;
 
 							?>
 						</form>

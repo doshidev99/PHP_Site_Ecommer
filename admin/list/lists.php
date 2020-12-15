@@ -170,7 +170,7 @@ $_category = $db->getAllData('category');
                         <div class="btn btn-danger" style="min-width: 100px">
                           <a class="text-white" href="?id=<?php echo $value['id_product'] ?>"> Xóa </a>
                         </div>
-                        <div class="btn btn-success mt-3" style="min-width: 100px">
+                        <div class="btn btn-success" style="min-width: 100px">
                           <a class="text-white" href="../edit/index.php?id=<?php echo $value['id_product'] ?>">
                             Sửa
                           </a>
