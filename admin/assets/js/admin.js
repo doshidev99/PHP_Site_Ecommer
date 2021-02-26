@@ -172,13 +172,13 @@
 			return false;
 		}
 		
-		$(window).scroll(function() {
-			if ($(window).scrollTop() >= 30) {
-				$('.header').addClass('fixed-header');
-			} else {
-				$('.header').removeClass('fixed-header');
-			}
-		});
+		// $(window).scroll(function() {
+		// 	if ($(window).scrollTop() >= 30) {
+		// 		$('.header').addClass('fixed-header');
+		// 	} else {
+		// 		$('.header').removeClass('fixed-header');
+		// 	}
+		// });
 		
 		$(document).on('click', '#loginSubmit', function() {
 			$("#adminSignIn").submit();

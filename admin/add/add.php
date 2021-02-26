@@ -61,6 +61,9 @@ if (isset($_POST['add-product'])) {
 									<option value="1">Áo</option>
 									<option value="2">Quần</option>
 									<option value="3">Phụ kiện</option>
+									<option value="4">Nam</option>
+									<option value="5">Nữ</option>
+									<option value="6">Trẻ Em</option>
 								</select>
 							</div>
 							<div class="from-group">

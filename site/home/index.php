@@ -2,7 +2,41 @@
 <html class="no-js" lang="en">
 
 <?php
-require '../../global.php';
+require '../../connected.php';
+?>
+
+<?php
+
+$category = $_GET['category'];
+$ma_hh = $_GET['id'];
+
+// if ($ma_hh) {
+//   $isDone = $db->delete($ma_hh, 'ma_hh', 'hang_hoa');
+//   if ($isDone) {
+//     echo "<script>window.location.href = './index.php' </script>";
+//   }
+// }
+
+if ($category) {
+  $_data = $db->getDataWithCondition('hang_hoa', 'ma_loai', $category);
+  $db->num_rows();
+  if ($db->num_rows()) {
+    $count_items = $db->num_rows();
+  }
+} else {
+  $_data = $db->getAllData('hang_hoa');
+  $db->num_rows();
+  if ($db->num_rows()) {
+    $count_items = $db->num_rows();
+  }
+}
+
+
+$_category = "SELECT * FROM `loai`";
+
+$_dataCategory = $db->execute($_category);
+
+
 ?>
 
 <head>
@@ -15,10 +49,10 @@ require '../../global.php';
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!--====== Favicon Icon ======-->
-  <link rel="shortcut icon" href="<?= $ROOT_URL?>/assets/images/favicon.png" type="image/png" />
+  <link rel="shortcut icon" href="<?= $ROOT_URL ?>/assets/images/favicon.png" type="image/png" />
 
-  <link rel="stylesheet" href="<?= $ROOT_URL?>/assets/css/vendor/plugins.min.css" />
-  <link rel="stylesheet" href="<?= $ROOT_URL?>/assets/css/style.min.css" />
+  <link rel="stylesheet" href="<?= $ROOT_URL ?>/assets/css/vendor/plugins.min.css" />
+  <link rel="stylesheet" href="<?= $ROOT_URL ?>/assets/css/style.min.css" />
 
 </head>
 
@@ -44,7 +78,7 @@ require '../../global.php';
 
           <div class="header-logo">
             <a href="index.html">
-              <img src="<?= $ROOT_URL?>/assets/images/logo-black.png" alt="Logo">
+              <img src="<?= $ROOT_URL ?>/assets/images/logo-black.png" alt="Logo">
             </a>
           </div>
 
@@ -344,7 +378,7 @@ require '../../global.php';
             <li>
               <div class="cart-product d-flex">
                 <div class="cart-product-image">
-                  <a href="product-simple-01.html"><img src="<?= $ROOT_URL?>/assets/images/cart/product-1.jpg" alt="product"></a>
+                  <a href="product-simple-01.html"><img src="<?= $ROOT_URL ?>/assets/images/cart/product-1.jpg" alt="product"></a>
                 </div>
                 <div class="cart-product-content media-body">
                   <h6 class="title"><a href="product-simple-01.html">Biker Jacket</a></h6>
@@ -356,7 +390,7 @@ require '../../global.php';
             <li>
               <div class="cart-product d-flex">
                 <div class="cart-product-image">
-                  <a href="product-simple-01.html"><img src="<?= $ROOT_URL?>/assets/images/cart/product-2.jpg" alt="product"></a>
+                  <a href="product-simple-01.html"><img src="<?= $ROOT_URL ?>/assets/images/cart/product-2.jpg" alt="product"></a>
                 </div>
                 <div class="cart-product-content media-body">
                   <h6 class="title"><a href="product-simple-01.html">Biker Jacket</a></h6>
@@ -368,7 +402,7 @@ require '../../global.php';
             <li>
               <div class="cart-product d-flex">
                 <div class="cart-product-image">
-                  <a href="product-simple-01.html"><img src="<?= $ROOT_URL?>/assets/images/cart/product-3.jpg" alt="product"></a>
+                  <a href="product-simple-01.html"><img src="<?= $ROOT_URL ?>/assets/images/cart/product-3.jpg" alt="product"></a>
                 </div>
                 <div class="cart-product-content media-body">
                   <h6 class="title"><a href="product-simple-01.html">Biker Jacket</a></h6>
@@ -396,7 +430,7 @@ require '../../global.php';
   <!--====== Slider Start ======-->
 
   <section id="sliderParallax" class="slider-area slider-01 slider-active">
-    <div class="single-slider bg_cover d-flex align-items-center paroller" style="background-image: url(<?= $ROOT_URL?>/assets/images/slider/slider-01-1.jpg);" data-paroller-factor="-0.15" data-paroller-type="foreground" data-paroller-direction="vertical">
+    <div class="single-slider bg_cover d-flex align-items-center paroller" style="background-image: url(<?= $ROOT_URL ?>/assets/images/slider/slider-01-1.jpg);" data-paroller-factor="-0.15" data-paroller-type="foreground" data-paroller-direction="vertical">
 
       <div class="container">
         <div id="slider" class="slider-content text-center layer" data-depth="0.3">
@@ -413,7 +447,7 @@ require '../../global.php';
       </div>
     </div>
 
-    <div class="single-slider bg_cover d-flex align-items-center paroller" style="background-image: url(<?= $ROOT_URL?>/assets/images/slider/slider-01-2.jpg);" data-paroller-factor="-0.15" data-paroller-type="foreground" data-paroller-direction="vertical">
+    <div class="single-slider bg_cover d-flex align-items-center paroller" style="background-image: url(<?= $ROOT_URL ?>/assets/images/slider/slider-01-2.jpg);" data-paroller-factor="-0.15" data-paroller-type="foreground" data-paroller-direction="vertical">
       <div class="container">
         <div class="slider-content text-center layer" data-depth="0.3">
           <h1 class="title"><span data-animation="slideInLeft" data-delay="0.6s">New</span></h1>
@@ -429,7 +463,7 @@ require '../../global.php';
       </div>
     </div>
 
-    <div class="single-slider bg_cover d-flex align-items-center paroller" style="background-image: url(<?= $ROOT_URL?>/assets/images/slider/slider-01-3.jpg);" data-paroller-factor="-0.15" data-paroller-type="foreground" data-paroller-direction="vertical">
+    <div class="single-slider bg_cover d-flex align-items-center paroller" style="background-image: url(<?= $ROOT_URL ?>/assets/images/slider/slider-01-3.jpg);" data-paroller-factor="-0.15" data-paroller-type="foreground" data-paroller-direction="vertical">
       <div class="container">
         <div class="slider-content text-center layer" data-depth="0.3">
           <h1 class="title"><span data-animation="slideInLeft" data-delay="0.6s">Summer</span></h1>
@@ -444,7 +478,7 @@ require '../../global.php';
         </div>
       </div>
       <div class="single-shape">
-        <img data-animation="zoomIn" data-delay="1.5s" class="layer" data-depth="0.3" src="<?= $ROOT_URL?>/assets/images/slider/slider-shape-1.png" alt="shape">
+        <img data-animation="zoomIn" data-delay="1.5s" class="layer" data-depth="0.3" src="<?= $ROOT_URL ?>/assets/images/slider/slider-shape-1.png" alt="shape">
       </div>
     </div>
   </section>
@@ -457,7 +491,7 @@ require '../../global.php';
     <div class="category-wrapper d-flex flex-wrap">
       <div class="category-item">
         <a href="shop-sidebar.html">
-          <img src="<?= $ROOT_URL?>/assets/images/m1-b1.jpg" alt="">
+          <img src="<?= $ROOT_URL ?>/assets/images/m1-b1.jpg" alt="">
           <div class="category-content">
             <h4 class="title">Top Trend</h4>
           </div>
@@ -465,7 +499,7 @@ require '../../global.php';
       </div>
       <div class="category-item">
         <a href="shop-sidebar.html">
-          <img src="<?= $ROOT_URL?>/assets/images/m1-b2.jpg" alt="">
+          <img src="<?= $ROOT_URL ?>/assets/images/m1-b2.jpg" alt="">
           <div class="category-content">
             <h4 class="title">Porcelain</h4>
           </div>
@@ -473,7 +507,7 @@ require '../../global.php';
       </div>
       <div class="category-item">
         <a href="shop-sidebar.html">
-          <img src="<?= $ROOT_URL?>/assets/images/m1-b3.jpg" alt="">
+          <img src="<?= $ROOT_URL ?>/assets/images/m1-b3.jpg" alt="">
           <div class="category-content">
             <h4 class="title">Storm</h4>
           </div>
@@ -500,7 +534,7 @@ require '../../global.php';
           <div class="single-collection text-center mt-30">
             <a href="shop-fullwidth.html">
               <div class="collection-image">
-                <img src="<?= $ROOT_URL?>/assets/images/collection/m1-c1.jpg" alt="collection">
+                <img src="<?= $ROOT_URL ?>/assets/images/collection/m1-c1.jpg" alt="collection">
               </div>
               <div class="collection-info">
                 <h5 class="title">NAVY BLUE SUIT BLAZER</h5>
@@ -512,7 +546,7 @@ require '../../global.php';
           <div class="single-collection text-center mt-30">
             <a href="shop-fullwidth.html">
               <div class="collection-image">
-                <img src="<?= $ROOT_URL?>/assets/images/collection/m1-c2.jpg" alt="collection">
+                <img src="<?= $ROOT_URL ?>/assets/images/collection/m1-c2.jpg" alt="collection">
               </div>
               <div class="collection-info">
                 <h5 class="title">NAVY BLUE SUIT BLAZER</h5>
@@ -524,7 +558,7 @@ require '../../global.php';
           <div class="single-collection text-center mt-30">
             <a href="shop-fullwidth.html">
               <div class="collection-image">
-                <img src="<?= $ROOT_URL?>/assets/images/collection/m1-c3.jpg" alt="collection">
+                <img src="<?= $ROOT_URL ?>/assets/images/collection/m1-c3.jpg" alt="collection">
               </div>
               <div class="collection-info">
                 <h5 class="title">NAVY BLUE SUIT BLAZER</h5>
@@ -536,7 +570,7 @@ require '../../global.php';
           <div class="single-collection text-center mt-30">
             <a href="shop-fullwidth.html">
               <div class="collection-image">
-                <img src="<?= $ROOT_URL?>/assets/images/collection/m1-c1.jpg" alt="collection">
+                <img src="<?= $ROOT_URL ?>/assets/images/collection/m1-c1.jpg" alt="collection">
               </div>
               <div class="collection-info">
                 <h5 class="title">NAVY BLUE SUIT BLAZER</h5>
@@ -564,17 +598,32 @@ require '../../global.php';
       <div class="product-menu">
         <ul class="nav justify-content-center">
           <li>
-            <a class="active" data-toggle="tab" href="#all">All</a>
+            <a class="
+            <?php
+            if (!$category) {
+              echo 'active';
+            }
+            ?>
+            " href="index.php">All</a>
           </li>
-          <li>
-            <a data-toggle="tab" href="#woman">Woman</a>
-          </li>
-          <li>
-            <a data-toggle="tab" href="#man">Man</a>
-          </li>
-          <li>
-            <a data-toggle="tab" href="#kids">Kids</a>
-          </li>
+
+
+          <?php
+          foreach ($_dataCategory as $valueCate) {
+          ?>
+            <li>
+              <a class="<?php
+                        if ($category === $valueCate['ma_loai']) {
+                          echo 'active';
+                        }
+                        ?>" href="?category=<?php echo $valueCate['ma_loai'] ?>"><?php echo $valueCate['ten_loai'] ?></a>
+            </li>
+          <?php
+
+          }
+
+          ?>
+
         </ul>
       </div>
     </div>
@@ -582,727 +631,53 @@ require '../../global.php';
       <div class="tab-content">
         <div class="tab-pane fade show active" id="all">
           <div class="row">
-            <div class="col-lg-3 col-md-4 col-sm-6">
-              <div class="single-product mt-50">
-                <div class="product-image">
-                  <div class="image">
-                    <img class="product-1" src="<?= $ROOT_URL?>/assets/images/product/product-1.jpg" alt="product">
-                    <img class="product-2" src="<?= $ROOT_URL?>/assets/images/product/product-2.jpg" alt="product">
-                    <a class="link" href="product-simple-01.html"></a>
+            <?php
+            $stt = 1;
+            foreach (array_reverse($_data) as $value) {
+            ?>
+
+
+              <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="single-product mt-50">
+                  <div class="product-image">
+                    <div class="image">
+                      <img class="product-1" src="<?= $ROOT_URL ?>/assets/images/product/<?php echo $value['hinh'] ?>" alt="product">
+                    </div>
+
                   </div>
-                  <ul class="product-meta text-center">
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Cart" href="#"><i class="fal fa-Shopping-cart"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Quick Shop" data-toggle="modal" data-target="#productQuick" href="#"><i class="fal fa-search-plus"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Wishlist" href="#"><i class="fal fa-heart"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Compare" href="#"><i class="fal fa-repeat-alt"></i></a></li>
-                  </ul>
-                </div>
-                <div class="product-content d-flex justify-content-between">
-                  <div class="product-title">
-                    <h4 class="title"><a href="product-simple-01.html">Basic Contrasting T-Shirt</a></h4>
-                  </div>
-                  <div class="product-price">
-                    <span class="price">£150.00</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-              <div class="single-product mt-50">
-                <div class="product-image">
-                  <div class="image">
-                    <img class="product-1" src="<?= $ROOT_URL?>/assets/images/product/product-3.jpg" alt="product">
-                    <img class="product-2" src="<?= $ROOT_URL?>/assets/images/product/product-4.jpg" alt="product">
-                    <a class="link" href="product-simple-01.html"></a>
-                  </div>
-                  <ul class="product-meta text-center">
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Cart" href="#"><i class="fal fa-Shopping-cart"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Quick Shop" data-toggle="modal" data-target="#productQuick" href="#"><i class="fal fa-search-plus"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Wishlist" href="#"><i class="fal fa-heart"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Compare" href="#"><i class="fal fa-repeat-alt"></i></a></li>
-                  </ul>
-                  <span class="discount">40%</span>
-                </div>
-                <div class="product-content d-flex justify-content-between">
-                  <div class="product-title">
-                    <h4 class="title"><a href="product-simple-01.html">Biker Jacket</a></h4>
-                  </div>
-                  <div class="product-price">
-                    <span class="regular-price">£250.00</span>
-                    <span class="sale-price">£200.00</span>
+                  <div class="product-content d-flex justify-content-between">
+                    <div class="product-title">
+                      <h4 class="title"><a href="./product-details.php?id=<?php echo $value['ma_hh'] ?>">
+                          <?php
+                          echo $value['ten_hh']
+                          ?>
+                        </a></h4>
+                    </div>
+                    <div class="product-price">
+                      <span class="price">
+
+                        <?php
+                        echo $value['don_gia']
+                        ?>
+
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-              <div class="single-product mt-50">
-                <div class="product-image">
-                  <div class="image">
-                    <img class="product-1" src="<?= $ROOT_URL?>/assets/images/product/product-5.jpg" alt="product">
-                    <img class="product-2" src="<?= $ROOT_URL?>/assets/images/product/product-6.jpg" alt="product">
-                    <a class="link" href="product-simple-01.html"></a>
-                  </div>
-                  <ul class="product-meta text-center">
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Cart" href="#"><i class="fal fa-Shopping-cart"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Quick Shop" data-toggle="modal" data-target="#productQuick" href="#"><i class="fal fa-search-plus"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Wishlist" href="#"><i class="fal fa-heart"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Compare" href="#"><i class="fal fa-repeat-alt"></i></a></li>
-                  </ul>
-                </div>
-                <div class="product-content d-flex justify-content-between">
-                  <div class="product-title">
-                    <h4 class="title"><a href="product-simple-01.html">Oversized Check Dress</a></h4>
-                  </div>
-                  <div class="product-price">
-                    <span class="price">£150.00</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-              <div class="single-product mt-50">
-                <div class="product-image">
-                  <div class="image">
-                    <img class="product-1" src="<?= $ROOT_URL?>/assets/images/product/product-7.jpg" alt="product">
-                    <img class="product-2" src="<?= $ROOT_URL?>/assets/images/product/product-8.jpg" alt="product">
-                    <a class="link" href="product-simple-01.html"></a>
-                  </div>
-                  <ul class="product-meta text-center">
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Cart" href="#"><i class="fal fa-Shopping-cart"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Quick Shop" data-toggle="modal" data-target="#productQuick" href="#"><i class="fal fa-search-plus"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Wishlist" href="#"><i class="fal fa-heart"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Compare" href="#"><i class="fal fa-repeat-alt"></i></a></li>
-                  </ul>
-                </div>
-                <div class="product-content d-flex justify-content-between">
-                  <div class="product-title">
-                    <h4 class="title"><a href="product-simple-01.html">Polyamide Dress With Long Sleeves</a></h4>
-                  </div>
-                  <div class="product-price">
-                    <span class="price">£150.00</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-              <div class="single-product mt-50">
-                <div class="product-image">
-                  <div class="image">
-                    <img class="product-1" src="<?= $ROOT_URL?>/assets/images/product/product-9.jpg" alt="product">
-                    <img class="product-2" src="<?= $ROOT_URL?>/assets/images/product/product-10.jpg" alt="product">
-                    <a class="link" href="product-simple-01.html"></a>
-                  </div>
-                  <ul class="product-meta text-center">
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Cart" href="#"><i class="fal fa-Shopping-cart"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Quick Shop" data-toggle="modal" data-target="#productQuick" href="#"><i class="fal fa-search-plus"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Wishlist" href="#"><i class="fal fa-heart"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Compare" href="#"><i class="fal fa-repeat-alt"></i></a></li>
-                  </ul>
-                </div>
-                <div class="product-content d-flex justify-content-between">
-                  <div class="product-title">
-                    <h4 class="title"><a href="product-simple-01.html">Ribbed High Neck Sweater</a></h4>
-                  </div>
-                  <div class="product-price">
-                    <span class="price">£150.00</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-              <div class="single-product mt-50">
-                <div class="product-image">
-                  <div class="image">
-                    <img class="product-1" src="<?= $ROOT_URL?>/assets/images/product/product-11.jpg" alt="product">
-                    <img class="product-2" src="<?= $ROOT_URL?>/assets/images/product/product-12.jpg" alt="product">
-                    <a class="link" href="product-simple-01.html"></a>
-                  </div>
-                  <ul class="product-meta text-center">
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Cart" href="#"><i class="fal fa-Shopping-cart"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Quick Shop" data-toggle="modal" data-target="#productQuick" href="#"><i class="fal fa-search-plus"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Wishlist" href="#"><i class="fal fa-heart"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Compare" href="#"><i class="fal fa-repeat-alt"></i></a></li>
-                  </ul>
-                </div>
-                <div class="product-content d-flex justify-content-between">
-                  <div class="product-title">
-                    <h4 class="title"><a href="product-simple-01.html">Shirt Dress With Pockets</a></h4>
-                  </div>
-                  <div class="product-price">
-                    <span class="price">£150.00</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-              <div class="single-product mt-50">
-                <div class="product-image">
-                  <div class="image">
-                    <img class="product-1" src="<?= $ROOT_URL?>/assets/images/product/product-13.jpg" alt="product">
-                    <img class="product-2" src="<?= $ROOT_URL?>/assets/images/product/product-14.jpg" alt="product">
-                    <a class="link" href="product-simple-01.html"></a>
-                  </div>
-                  <ul class="product-meta text-center">
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Cart" href="#"><i class="fal fa-Shopping-cart"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Quick Shop" data-toggle="modal" data-target="#productQuick" href="#"><i class="fal fa-search-plus"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Wishlist" href="#"><i class="fal fa-heart"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Compare" href="#"><i class="fal fa-repeat-alt"></i></a></li>
-                  </ul>
-                </div>
-                <div class="product-content d-flex justify-content-between">
-                  <div class="product-title">
-                    <h4 class="title"><a href="product-simple-01.html">The Skinny Jeans n Dusty Grey</a></h4>
-                  </div>
-                  <div class="product-price">
-                    <span class="price">£150.00</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-              <div class="single-product mt-50">
-                <div class="product-image">
-                  <div class="image">
-                    <img class="product-1" src="<?= $ROOT_URL?>/assets/images/product/product-15.jpg" alt="product">
-                    <img class="product-2" src="<?= $ROOT_URL?>/assets/images/product/product-16.jpg" alt="product">
-                    <a class="link" href="product-simple-01.html"></a>
-                  </div>
-                  <ul class="product-meta text-center">
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Cart" href="#"><i class="fal fa-Shopping-cart"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Quick Shop" data-toggle="modal" data-target="#productQuick" href="#"><i class="fal fa-search-plus"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Wishlist" href="#"><i class="fal fa-heart"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Compare" href="#"><i class="fal fa-repeat-alt"></i></a></li>
-                  </ul>
-                </div>
-                <div class="product-content d-flex justify-content-between">
-                  <div class="product-title">
-                    <h4 class="title"><a href="product-simple-01.html">The Skinny Sioux Shaper Jeans</a></h4>
-                  </div>
-                  <div class="product-price">
-                    <span class="price">£150.00</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+
+
+            <?php
+              $stt++;
+            }
+            ?>
+
           </div>
         </div>
-        <div class="tab-pane fade" id="woman">
-          <div class="row">
-            <div class="col-lg-3 col-md-4 col-sm-6">
-              <div class="single-product mt-50">
-                <div class="product-image">
-                  <div class="image">
-                    <img class="product-1" src="<?= $ROOT_URL?>/assets/images/product/product-1.jpg" alt="product">
-                    <img class="product-2" src="<?= $ROOT_URL?>/assets/images/product/product-2.jpg" alt="product">
-                    <a class="link" href="product-simple-01.html"></a>
-                  </div>
-                  <ul class="product-meta text-center">
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Cart" href="#"><i class="fal fa-Shopping-cart"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Quick Shop" data-toggle="modal" data-target="#productQuick" href="#"><i class="fal fa-search-plus"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Wishlist" href="#"><i class="fal fa-heart"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Compare" href="#"><i class="fal fa-repeat-alt"></i></a></li>
-                  </ul>
-                </div>
-                <div class="product-content d-flex justify-content-between">
-                  <div class="product-title">
-                    <h4 class="title"><a href="product-simple-01.html">Basic Contrasting T-Shirt</a></h4>
-                  </div>
-                  <div class="product-price">
-                    <span class="price">£150.00</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-              <div class="single-product mt-50">
-                <div class="product-image">
-                  <div class="image">
-                    <img class="product-1" src="<?= $ROOT_URL?>/assets/images/product/product-25.jpg" alt="product">
-                    <img class="product-2" src="<?= $ROOT_URL?>/assets/images/product/product-26.jpg" alt="product">
-                    <a class="link" href="product-simple-01.html"></a>
-                  </div>
-                  <ul class="product-meta text-center">
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Cart" href="#"><i class="fal fa-Shopping-cart"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Quick Shop" data-toggle="modal" data-target="#productQuick" href="#"><i class="fal fa-search-plus"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Wishlist" href="#"><i class="fal fa-heart"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Compare" href="#"><i class="fal fa-repeat-alt"></i></a></li>
-                  </ul>
-                </div>
-                <div class="product-content d-flex justify-content-between">
-                  <div class="product-title">
-                    <h4 class="title"><a href="product-simple-01.html">Biker Jacket</a></h4>
-                  </div>
-                  <div class="product-price">
-                    <span class="price">£250.00</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-              <div class="single-product mt-50">
-                <div class="product-image">
-                  <div class="image">
-                    <img class="product-1" src="<?= $ROOT_URL?>/assets/images/product/product-31.jpg" alt="product">
-                    <a class="link" href="product-simple-01.html"></a>
-                  </div>
-                  <ul class="product-meta text-center">
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Cart" href="#"><i class="fal fa-Shopping-cart"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Quick Shop" data-toggle="modal" data-target="#productQuick" href="#"><i class="fal fa-search-plus"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Wishlist" href="#"><i class="fal fa-heart"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Compare" href="#"><i class="fal fa-repeat-alt"></i></a></li>
-                  </ul>
-                </div>
-                <div class="product-content d-flex justify-content-between">
-                  <div class="product-title">
-                    <h4 class="title"><a href="product-simple-01.html">Oversized Check Dress</a></h4>
-                  </div>
-                  <div class="product-price">
-                    <span class="price">£150.00</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-              <div class="single-product mt-50">
-                <div class="product-image">
-                  <div class="image">
-                    <img class="product-1" src="<?= $ROOT_URL?>/assets/images/product/product-7.jpg" alt="product">
-                    <a class="link" href="product-simple-01.html"></a>
-                  </div>
-                  <ul class="product-meta text-center">
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Cart" href="#"><i class="fal fa-Shopping-cart"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Quick Shop" data-toggle="modal" data-target="#productQuick" href="#"><i class="fal fa-search-plus"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Wishlist" href="#"><i class="fal fa-heart"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Compare" href="#"><i class="fal fa-repeat-alt"></i></a></li>
-                  </ul>
-                </div>
-                <div class="product-content d-flex justify-content-between">
-                  <div class="product-title">
-                    <h4 class="title"><a href="product-simple-01.html">Polyamide Dress With Long Sleeves</a></h4>
-                  </div>
-                  <div class="product-price">
-                    <span class="price">£150.00</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-              <div class="single-product mt-50">
-                <div class="product-image">
-                  <div class="image">
-                    <img class="product-1" src="<?= $ROOT_URL?>/assets/images/product/product-32.jpg" alt="product">
-                    <a class="link" href="product-simple-01.html"></a>
-                  </div>
-                  <ul class="product-meta text-center">
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Cart" href="#"><i class="fal fa-Shopping-cart"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Quick Shop" data-toggle="modal" data-target="#productQuick" href="#"><i class="fal fa-search-plus"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Wishlist" href="#"><i class="fal fa-heart"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Compare" href="#"><i class="fal fa-repeat-alt"></i></a></li>
-                  </ul>
-                </div>
-                <div class="product-content d-flex justify-content-between">
-                  <div class="product-title">
-                    <h4 class="title"><a href="product-simple-01.html">Ribbed High Neck Sweater</a></h4>
-                  </div>
-                  <div class="product-price">
-                    <span class="price">£150.00</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-              <div class="single-product mt-50">
-                <div class="product-image">
-                  <div class="image">
-                    <img class="product-1" src="<?= $ROOT_URL?>/assets/images/product/product-28.jpg" alt="product">
-                    <a class="link" href="product-simple-01.html"></a>
-                  </div>
-                  <ul class="product-meta text-center">
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Cart" href="#"><i class="fal fa-Shopping-cart"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Quick Shop" data-toggle="modal" data-target="#productQuick" href="#"><i class="fal fa-search-plus"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Wishlist" href="#"><i class="fal fa-heart"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Compare" href="#"><i class="fal fa-repeat-alt"></i></a></li>
-                  </ul>
-                  <span class="discount">40%</span>
-                </div>
-                <div class="product-content d-flex justify-content-between">
-                  <div class="product-title">
-                    <h4 class="title"><a href="product-simple-01.html">Shirt Dress With Pockets</a></h4>
-                  </div>
-                  <div class="product-price">
-                    <span class="regular-price">£250.00</span>
-                    <span class="sale-price">£200.00</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-              <div class="single-product mt-50">
-                <div class="product-image">
-                  <div class="image">
-                    <img class="product-1" src="<?= $ROOT_URL?>/assets/images/product/product-19.jpg" alt="product">
-                    <img class="product-2" src="<?= $ROOT_URL?>/assets/images/product/product-20.jpg" alt="product">
-                    <a class="link" href="product-simple-01.html"></a>
-                  </div>
-                  <ul class="product-meta text-center">
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Cart" href="#"><i class="fal fa-Shopping-cart"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Quick Shop" data-toggle="modal" data-target="#productQuick" href="#"><i class="fal fa-search-plus"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Wishlist" href="#"><i class="fal fa-heart"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Compare" href="#"><i class="fal fa-repeat-alt"></i></a></li>
-                  </ul>
-                </div>
-                <div class="product-content d-flex justify-content-between">
-                  <div class="product-title">
-                    <h4 class="title"><a href="product-simple-01.html">The Skinny Jeans n Dusty Grey</a></h4>
-                  </div>
-                  <div class="product-price">
-                    <span class="price">£150.00</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-              <div class="single-product mt-50">
-                <div class="product-image">
-                  <div class="image">
-                    <img class="product-1" src="<?= $ROOT_URL?>/assets/images/product/product-5.jpg" alt="product">
-                    <img class="product-2" src="<?= $ROOT_URL?>/assets/images/product/product-6.jpg" alt="product">
-                    <a class="link" href="product-simple-01.html"></a>
-                  </div>
-                  <ul class="product-meta text-center">
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Cart" href="#"><i class="fal fa-Shopping-cart"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Quick Shop" data-toggle="modal" data-target="#productQuick" href="#"><i class="fal fa-search-plus"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Wishlist" href="#"><i class="fal fa-heart"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Compare" href="#"><i class="fal fa-repeat-alt"></i></a></li>
-                  </ul>
-                </div>
-                <div class="product-content d-flex justify-content-between">
-                  <div class="product-title">
-                    <h4 class="title"><a href="product-simple-01.html">The Skinny Sioux Shaper Jeans</a></h4>
-                  </div>
-                  <div class="product-price">
-                    <span class="price">£150.00</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="tab-pane fade" id="man">
-          <div class="row">
-            <div class="col-lg-3 col-md-4 col-sm-6">
-              <div class="single-product mt-50">
-                <div class="product-image">
-                  <div class="image">
-                    <img class="product-1" src="<?= $ROOT_URL?>/assets/images/product/product-3.jpg" alt="product">
-                    <img class="product-2" src="<?= $ROOT_URL?>/assets/images/product/product-4.jpg" alt="product">
-                    <a class="link" href="product-simple-01.html"></a>
-                  </div>
-                  <ul class="product-meta text-center">
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Cart" href="#"><i class="fal fa-Shopping-cart"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Quick Shop" data-toggle="modal" data-target="#productQuick" href="#"><i class="fal fa-search-plus"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Wishlist" href="#"><i class="fal fa-heart"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Compare" href="#"><i class="fal fa-repeat-alt"></i></a></li>
-                  </ul>
-                  <span class="discount">40%</span>
-                </div>
-                <div class="product-content d-flex justify-content-between">
-                  <div class="product-title">
-                    <h4 class="title"><a href="product-simple-01.html">Basic Contrasting T-Shirt</a></h4>
-                  </div>
-                  <div class="product-price">
-                    <span class="regular-price">£250.00</span>
-                    <span class="sale-price">£200.00</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-              <div class="single-product mt-50">
-                <div class="product-image">
-                  <div class="image">
-                    <img class="product-1" src="<?= $ROOT_URL?>/assets/images/product/product-9.jpg" alt="product">
-                    <img class="product-2" src="<?= $ROOT_URL?>/assets/images/product/product-10.jpg" alt="product">
-                    <a class="link" href="product-simple-01.html"></a>
-                  </div>
-                  <ul class="product-meta text-center">
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Cart" href="#"><i class="fal fa-Shopping-cart"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Quick Shop" data-toggle="modal" data-target="#productQuick" href="#"><i class="fal fa-search-plus"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Wishlist" href="#"><i class="fal fa-heart"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Compare" href="#"><i class="fal fa-repeat-alt"></i></a></li>
-                  </ul>
-                </div>
-                <div class="product-content d-flex justify-content-between">
-                  <div class="product-title">
-                    <h4 class="title"><a href="product-simple-01.html">Biker Jacket</a></h4>
-                  </div>
-                  <div class="product-price">
-                    <span class="price">£250.00</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-              <div class="single-product mt-50">
-                <div class="product-image">
-                  <div class="image">
-                    <img class="product-1" src="<?= $ROOT_URL?>/assets/images/product/product-23.jpg" alt="product">
-                    <a class="link" href="product-simple-01.html"></a>
-                  </div>
-                  <ul class="product-meta text-center">
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Cart" href="#"><i class="fal fa-Shopping-cart"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Quick Shop" data-toggle="modal" data-target="#productQuick" href="#"><i class="fal fa-search-plus"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Wishlist" href="#"><i class="fal fa-heart"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Compare" href="#"><i class="fal fa-repeat-alt"></i></a></li>
-                  </ul>
-                </div>
-                <div class="product-content d-flex justify-content-between">
-                  <div class="product-title">
-                    <h4 class="title"><a href="product-simple-01.html">Oversized Check Dress</a></h4>
-                  </div>
-                  <div class="product-price">
-                    <span class="price">£150.00</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-              <div class="single-product mt-50">
-                <div class="product-image">
-                  <div class="image">
-                    <img class="product-1" src="<?= $ROOT_URL?>/assets/images/product/product-24.jpg" alt="product">
-                    <a class="link" href="product-simple-01.html"></a>
-                  </div>
-                  <ul class="product-meta text-center">
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Cart" href="#"><i class="fal fa-Shopping-cart"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Quick Shop" data-toggle="modal" data-target="#productQuick" href="#"><i class="fal fa-search-plus"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Wishlist" href="#"><i class="fal fa-heart"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Compare" href="#"><i class="fal fa-repeat-alt"></i></a></li>
-                  </ul>
-                </div>
-                <div class="product-content d-flex justify-content-between">
-                  <div class="product-title">
-                    <h4 class="title"><a href="product-simple-01.html">Polyamide Dress With Long Sleeves</a></h4>
-                  </div>
-                  <div class="product-price">
-                    <span class="price">£150.00</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-              <div class="single-product mt-50">
-                <div class="product-image">
-                  <div class="image">
-                    <img class="product-1" src="<?= $ROOT_URL?>/assets/images/product/product-17.jpg" alt="product">
-                    <img class="product-2" src="<?= $ROOT_URL?>/assets/images/product/product-18.jpg" alt="product">
-                    <a class="link" href="product-simple-01.html"></a>
-                  </div>
-                  <ul class="product-meta text-center">
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Cart" href="#"><i class="fal fa-Shopping-cart"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Quick Shop" data-toggle="modal" data-target="#productQuick" href="#"><i class="fal fa-search-plus"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Wishlist" href="#"><i class="fal fa-heart"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Compare" href="#"><i class="fal fa-repeat-alt"></i></a></li>
-                  </ul>
-                </div>
-                <div class="product-content d-flex justify-content-between">
-                  <div class="product-title">
-                    <h4 class="title"><a href="product-simple-01.html">Ribbed High Neck Sweater</a></h4>
-                  </div>
-                  <div class="product-price">
-                    <span class="price">£150.00</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-              <div class="single-product mt-50">
-                <div class="product-image">
-                  <div class="image">
-                    <img class="product-1" src="<?= $ROOT_URL?>/assets/images/product/product-29.jpg" alt="product">
-                    <img class="product-2" src="<?= $ROOT_URL?>/assets/images/product/product-30.jpg" alt="product">
-                    <a class="link" href="product-simple-01.html"></a>
-                  </div>
-                  <ul class="product-meta text-center">
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Cart" href="#"><i class="fal fa-Shopping-cart"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Quick Shop" data-toggle="modal" data-target="#productQuick" href="#"><i class="fal fa-search-plus"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Wishlist" href="#"><i class="fal fa-heart"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Compare" href="#"><i class="fal fa-repeat-alt"></i></a></li>
-                  </ul>
-                </div>
-                <div class="product-content d-flex justify-content-between">
-                  <div class="product-title">
-                    <h4 class="title"><a href="product-simple-01.html">Shirt Dress With Pockets</a></h4>
-                  </div>
-                  <div class="product-price">
-                    <span class="price">£150.00</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-              <div class="single-product mt-50">
-                <div class="product-image">
-                  <div class="image">
-                    <img class="product-1" src="<?= $ROOT_URL?>/assets/images/product/product-4.jpg" alt="product">
-                    <img class="product-2" src="<?= $ROOT_URL?>/assets/images/product/product-4.jpg" alt="product">
-                    <a class="link" href="product-simple-01.html"></a>
-                  </div>
-                  <ul class="product-meta text-center">
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Cart" href="#"><i class="fal fa-Shopping-cart"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Quick Shop" data-toggle="modal" data-target="#productQuick" href="#"><i class="fal fa-search-plus"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Wishlist" href="#"><i class="fal fa-heart"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Compare" href="#"><i class="fal fa-repeat-alt"></i></a></li>
-                  </ul>
-                </div>
-                <div class="product-content d-flex justify-content-between">
-                  <div class="product-title">
-                    <h4 class="title"><a href="product-simple-01.html">The Skinny Jeans n Dusty Grey</a></h4>
-                  </div>
-                  <div class="product-price">
-                    <span class="price">£150.00</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-              <div class="single-product mt-50">
-                <div class="product-image">
-                  <div class="image">
-                    <img class="product-1" src="<?= $ROOT_URL?>/assets/images/product/product-9.jpg" alt="product">
-                    <img class="product-2" src="<?= $ROOT_URL?>/assets/images/product/product-10.jpg" alt="product">
-                    <a class="link" href="product-simple-01.html"></a>
-                  </div>
-                  <ul class="product-meta text-center">
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Cart" href="#"><i class="fal fa-Shopping-cart"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Quick Shop" data-toggle="modal" data-target="#productQuick" href="#"><i class="fal fa-search-plus"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Wishlist" href="#"><i class="fal fa-heart"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Compare" href="#"><i class="fal fa-repeat-alt"></i></a></li>
-                  </ul>
-                </div>
-                <div class="product-content d-flex justify-content-between">
-                  <div class="product-title">
-                    <h4 class="title"><a href="product-simple-01.html">The Skinny Sioux Shaper Jeans</a></h4>
-                  </div>
-                  <div class="product-price">
-                    <span class="price">£150.00</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="tab-pane fade" id="kids">
-          <div class="row">
-            <div class="col-lg-3 col-md-4 col-sm-6">
-              <div class="single-product mt-50">
-                <div class="product-image">
-                  <div class="image">
-                    <img class="product-1" src="<?= $ROOT_URL?>/assets/images/product/product-7.jpg" alt="product">
-                    <img class="product-2" src="<?= $ROOT_URL?>/assets/images/product/product-8.jpg" alt="product">
-                    <a class="link" href="product-simple-01.html"></a>
-                  </div>
-                  <ul class="product-meta text-center">
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Cart" href="#"><i class="fal fa-Shopping-cart"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Quick Shop" data-toggle="modal" data-target="#productQuick" href="#"><i class="fal fa-search-plus"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Wishlist" href="#"><i class="fal fa-heart"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Compare" href="#"><i class="fal fa-repeat-alt"></i></a></li>
-                  </ul>
-                  <span class="discount">40%</span>
-                </div>
-                <div class="product-content d-flex justify-content-between">
-                  <div class="product-title">
-                    <h4 class="title"><a href="product-simple-01.html">Basic Contrasting T-Shirt</a></h4>
-                  </div>
-                  <div class="product-price">
-                    <span class="regular-price">£250.00</span>
-                    <span class="sale-price">£200.00</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-              <div class="single-product mt-50">
-                <div class="product-image">
-                  <div class="image">
-                    <img class="product-1" src="<?= $ROOT_URL?>/assets/images/product/product-9.jpg" alt="product">
-                    <img class="product-2" src="<?= $ROOT_URL?>/assets/images/product/product-10.jpg" alt="product">
-                    <a class="link" href="product-simple-01.html"></a>
-                  </div>
-                  <ul class="product-meta text-center">
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Cart" href="#"><i class="fal fa-Shopping-cart"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Quick Shop" data-toggle="modal" data-target="#productQuick" href="#"><i class="fal fa-search-plus"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Wishlist" href="#"><i class="fal fa-heart"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Compare" href="#"><i class="fal fa-repeat-alt"></i></a></li>
-                  </ul>
-                </div>
-                <div class="product-content d-flex justify-content-between">
-                  <div class="product-title">
-                    <h4 class="title"><a href="product-simple-01.html">Biker Jacket</a></h4>
-                  </div>
-                  <div class="product-price">
-                    <span class="price">£250.00</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-              <div class="single-product mt-50">
-                <div class="product-image">
-                  <div class="image">
-                    <img class="product-1" src="<?= $ROOT_URL?>/assets/images/product/product-21.jpg" alt="product">
-                    <img class="product-2" src="<?= $ROOT_URL?>/assets/images/product/product-22.jpg" alt="product">
-                    <a class="link" href="product-simple-01.html"></a>
-                  </div>
-                  <ul class="product-meta text-center">
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Cart" href="#"><i class="fal fa-Shopping-cart"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Quick Shop" data-toggle="modal" data-target="#productQuick" href="#"><i class="fal fa-search-plus"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Wishlist" href="#"><i class="fal fa-heart"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Compare" href="#"><i class="fal fa-repeat-alt"></i></a></li>
-                  </ul>
-                </div>
-                <div class="product-content d-flex justify-content-between">
-                  <div class="product-title">
-                    <h4 class="title"><a href="product-simple-01.html">Oversized Check Dress</a></h4>
-                  </div>
-                  <div class="product-price">
-                    <span class="price">£150.00</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-              <div class="single-product mt-50">
-                <div class="product-image">
-                  <div class="image">
-                    <img class="product-1" src="<?= $ROOT_URL?>/assets/images/product/product-23.jpg" alt="product">
-                    <img class="product-2" src="<?= $ROOT_URL?>/assets/images/product/product-24.jpg" alt="product">
-                    <a class="link" href="product-simple-01.html"></a>
-                  </div>
-                  <ul class="product-meta text-center">
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Cart" href="#"><i class="fal fa-Shopping-cart"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Quick Shop" data-toggle="modal" data-target="#productQuick" href="#"><i class="fal fa-search-plus"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Wishlist" href="#"><i class="fal fa-heart"></i></a></li>
-                    <li><a data-tooltip="tooltip" data-placement="top" title="Add to Compare" href="#"><i class="fal fa-repeat-alt"></i></a></li>
-                  </ul>
-                </div>
-                <div class="product-content d-flex justify-content-between">
-                  <div class="product-title">
-                    <h4 class="title"><a href="product-simple-01.html">Polyamide Dress With Long Sleeves</a></h4>
-                  </div>
-                  <div class="product-price">
-                    <span class="price">£150.00</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="product-btn text-center mt-50">
+          <a href="#" class="view-product-2">View All Product</a>
         </div>
       </div>
-      <div class="product-btn text-center mt-50">
-        <a href="shop-sidebar.html" class="view-product-2">View All Product</a>
-      </div>
-    </div>
   </section>
 
   <!--====== Product Ends ======-->
@@ -1312,7 +687,7 @@ require '../../global.php';
   <section class="banner-area">
     <div class="row">
       <div class="col-lg-6 col-md-5">
-        <div class="banner-image bg_cover" style="background-image: url(<?= $ROOT_URL?>/assets/images/m1-bg1.jpg);"></div>
+        <div class="banner-image bg_cover" style="background-image: url(<?= $ROOT_URL ?>/assets/images/m1-bg1.jpg);"></div>
       </div>
       <div class="col-lg-6 col-md-7">
         <div class="banner-content">
@@ -1344,8 +719,8 @@ require '../../global.php';
           <div class="single-product mt-50">
             <div class="product-image">
               <div class="image">
-                <img class="product-1" src="<?= $ROOT_URL?>/assets/images/product/product-7.jpg" alt="product">
-                <img class="product-2" src="<?= $ROOT_URL?>/assets/images/product/product-8.jpg" alt="product">
+                <img class="product-1" src="<?= $ROOT_URL ?>/assets/images/product/product-7.jpg" alt="product">
+                <img class="product-2" src="<?= $ROOT_URL ?>/assets/images/product/product-8.jpg" alt="product">
                 <a class="link" href="product-simple-01.html"></a>
               </div>
               <ul class="product-meta text-center">
@@ -1371,8 +746,8 @@ require '../../global.php';
           <div class="single-product mt-50">
             <div class="product-image">
               <div class="image">
-                <img class="product-1" src="<?= $ROOT_URL?>/assets/images/product/product-9.jpg" alt="product">
-                <img class="product-2" src="<?= $ROOT_URL?>/assets/images/product/product-10.jpg" alt="product">
+                <img class="product-1" src="<?= $ROOT_URL ?>/assets/images/product/product-9.jpg" alt="product">
+                <img class="product-2" src="<?= $ROOT_URL ?>/assets/images/product/product-10.jpg" alt="product">
                 <a class="link" href="product-simple-01.html"></a>
               </div>
               <ul class="product-meta text-center">
@@ -1396,8 +771,8 @@ require '../../global.php';
           <div class="single-product mt-50">
             <div class="product-image">
               <div class="image">
-                <img class="product-1" src="<?= $ROOT_URL?>/assets/images/product/product-21.jpg" alt="product">
-                <img class="product-2" src="<?= $ROOT_URL?>/assets/images/product/product-22.jpg" alt="product">
+                <img class="product-1" src="<?= $ROOT_URL ?>/assets/images/product/product-21.jpg" alt="product">
+                <img class="product-2" src="<?= $ROOT_URL ?>/assets/images/product/product-22.jpg" alt="product">
                 <a class="link" href="product-simple-01.html"></a>
               </div>
               <ul class="product-meta text-center">
@@ -1421,8 +796,8 @@ require '../../global.php';
           <div class="single-product mt-50">
             <div class="product-image">
               <div class="image">
-                <img class="product-1" src="<?= $ROOT_URL?>/assets/images/product/product-23.jpg" alt="product">
-                <img class="product-2" src="<?= $ROOT_URL?>/assets/images/product/product-24.jpg" alt="product">
+                <img class="product-1" src="<?= $ROOT_URL ?>/assets/images/product/product-23.jpg" alt="product">
+                <img class="product-2" src="<?= $ROOT_URL ?>/assets/images/product/product-24.jpg" alt="product">
                 <a class="link" href="product-simple-01.html"></a>
               </div>
               <ul class="product-meta text-center">
@@ -1506,7 +881,7 @@ require '../../global.php';
           <div class="single-blog mt-30">
             <div class="blog-image">
               <a href="blog-details.html">
-                <img src="<?= $ROOT_URL?>/assets/images/blog-1.jpg" alt="blog">
+                <img src="<?= $ROOT_URL ?>/assets/images/blog-1.jpg" alt="blog">
                 <i class="fal fa-search-plus"></i>
               </a>
             </div>
@@ -1526,7 +901,7 @@ require '../../global.php';
           <div class="single-blog mt-30">
             <div class="blog-image">
               <a href="blog-details.html">
-                <img src="<?= $ROOT_URL?>/assets/images/blog-2.jpg" alt="blog">
+                <img src="<?= $ROOT_URL ?>/assets/images/blog-2.jpg" alt="blog">
                 <i class="fal fa-search-plus"></i>
               </a>
             </div>
@@ -1546,7 +921,7 @@ require '../../global.php';
           <div class="single-blog mt-30">
             <div class="blog-image">
               <a href="blog-details.html">
-                <img src="<?= $ROOT_URL?>/assets/images/blog-3.jpg" alt="blog">
+                <img src="<?= $ROOT_URL ?>/assets/images/blog-3.jpg" alt="blog">
                 <i class="fal fa-search-plus"></i>
               </a>
             </div>
@@ -1575,27 +950,27 @@ require '../../global.php';
       <div class="brand-row brand-active">
         <div class="brand-col">
           <div class="single-brand-2">
-            <img src="<?= $ROOT_URL?>/assets/images/brand-1.png" alt="brand">
+            <img src="<?= $ROOT_URL ?>/assets/images/brand-1.png" alt="brand">
           </div>
         </div>
         <div class="brand-col">
           <div class="single-brand-2">
-            <img src="<?= $ROOT_URL?>/assets/images/brand-2.png" alt="brand">
+            <img src="<?= $ROOT_URL ?>/assets/images/brand-2.png" alt="brand">
           </div>
         </div>
         <div class="brand-col">
           <div class="single-brand-2">
-            <img src="<?= $ROOT_URL?>/assets/images/brand-3.png" alt="brand">
+            <img src="<?= $ROOT_URL ?>/assets/images/brand-3.png" alt="brand">
           </div>
         </div>
         <div class="brand-col">
           <div class="single-brand-2">
-            <img src="<?= $ROOT_URL?>/assets/images/brand-4.png" alt="brand">
+            <img src="<?= $ROOT_URL ?>/assets/images/brand-4.png" alt="brand">
           </div>
         </div>
         <div class="brand-col">
           <div class="single-brand-2">
-            <img src="<?= $ROOT_URL?>/assets/images/brand-5.png" alt="brand">
+            <img src="<?= $ROOT_URL ?>/assets/images/brand-5.png" alt="brand">
           </div>
         </div>
       </div>
@@ -1606,14 +981,14 @@ require '../../global.php';
 
   <!--====== Footer Start ======-->
 
-  <footer class="footer-area bg_cover pt-20 pb-50" style="background-image: url(<?= $ROOT_URL?>/assets/images/footer-bg.jpg);">
+  <footer class="footer-area bg_cover pt-20 pb-50" style="background-image: url(<?= $ROOT_URL ?>/assets/images/footer-bg.jpg);">
     <div class="footer-widget">
       <div class="container-fluid custom-container">
         <div class="row align-items-center">
           <div class="col-md-3">
             <div class="footer-logo-copyright text-md-left text-center mt-30">
               <a href="index.html">
-                <img src="<?= $ROOT_URL?>/assets/images/logo-white.png" alt="Logo">
+                <img src="<?= $ROOT_URL ?>/assets/images/logo-white.png" alt="Logo">
               </a>
               <p>&copy; Copyright 2020 <a href="https://hasthemes.com/">HasThemes</a></p>
             </div>
@@ -1668,32 +1043,32 @@ require '../../global.php';
                 <div class="quick-view-thumb">
                   <div class="quick-thumb-active">
                     <div class="single-quick-thumb">
-                      <img src="<?= $ROOT_URL?>/assets/images/product/product-37.jpg" alt="">
+                      <img src="<?= $ROOT_URL ?>/assets/images/product/product-37.jpg" alt="">
                     </div>
                     <div class="single-quick-thumb">
-                      <img src="<?= $ROOT_URL?>/assets/images/product/product-38.jpg" alt="">
+                      <img src="<?= $ROOT_URL ?>/assets/images/product/product-38.jpg" alt="">
                     </div>
                     <div class="single-quick-thumb">
-                      <img src="<?= $ROOT_URL?>/assets/images/product/product-27.jpg" alt="">
+                      <img src="<?= $ROOT_URL ?>/assets/images/product/product-27.jpg" alt="">
                     </div>
                     <div class="single-quick-thumb">
-                      <img src="<?= $ROOT_URL?>/assets/images/product/product-28.jpg" alt="">
+                      <img src="<?= $ROOT_URL ?>/assets/images/product/product-28.jpg" alt="">
                     </div>
                   </div>
                 </div>
                 <div class="quick-view-preview">
                   <div class="quick-preview-active">
                     <div class="single-quick-preview">
-                      <img src="<?= $ROOT_URL?>/assets/images/product/product-37.jpg" alt="">
+                      <img src="<?= $ROOT_URL ?>/assets/images/product/product-37.jpg" alt="">
                     </div>
                     <div class="single-quick-preview">
-                      <img src="<?= $ROOT_URL?>/assets/images/product/product-38.jpg" alt="">
+                      <img src="<?= $ROOT_URL ?>/assets/images/product/product-38.jpg" alt="">
                     </div>
                     <div class="single-quick-preview">
-                      <img src="<?= $ROOT_URL?>/assets/images/product/product-27.jpg" alt="">
+                      <img src="<?= $ROOT_URL ?>/assets/images/product/product-27.jpg" alt="">
                     </div>
                     <div class="single-quick-preview">
-                      <img src="<?= $ROOT_URL?>/assets/images/product/product-28.jpg" alt="">
+                      <img src="<?= $ROOT_URL ?>/assets/images/product/product-28.jpg" alt="">
                     </div>
                   </div>
                 </div>
@@ -1753,20 +1128,20 @@ require '../../global.php';
 
 
   <!--====== Jquery js ======-->
-  <script src="<?= $ROOT_URL?>/assets/js/vendor/jquery-3.5.1.min.js"></script>
-  <script src="<?= $ROOT_URL?>/assets/js/vendor/modernizr-3.7.1.min.js"></script>
+  <script src="<?= $ROOT_URL ?>/assets/js/vendor/jquery-3.5.1.min.js"></script>
+  <script src="<?= $ROOT_URL ?>/assets/js/vendor/modernizr-3.7.1.min.js"></script>
 
   <!--====== All Plugins js ======-->
 
-  <script src="<?= $ROOT_URL?>/assets/js/plugins/parallax.min.js"></script>
+  <script src="<?= $ROOT_URL ?>/assets/js/plugins/parallax.min.js"></script>
 
   <!--====== Use the minified version files listed below for better performance and remove the files listed above ======-->
 
-  <script src="<?= $ROOT_URL?>/assets/js/plugins.min.js"></script>
+  <script src="<?= $ROOT_URL ?>/assets/js/plugins.min.js"></script>
 
 
   <!--====== Main Activation  js ======-->
-  <script src="<?= $ROOT_URL?>/assets/js/main.js"></script>
+  <script src="<?= $ROOT_URL ?>/assets/js/main.js"></script>
 
 </body>
 

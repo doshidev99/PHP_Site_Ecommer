@@ -52,7 +52,9 @@ if ($category) {
                 <select name="category" style="border: none; border-radius: 3px" id="1">
                   <option value="1">Áo</option>
                   <option value="2">Quần</option>
-                  <option value="3">Phụ kiện</option>
+                  <option value="4">Nữ</option>
+                  <option value="5">Nam</option>
+                  <option value="6">Trẻ em</option>
                 </select>
               </div>
             </div>
@@ -126,10 +128,10 @@ if ($category) {
                         <label class="badge badge-dark">
                           <?php
                           switch ($value['tinh_trang']) {
-                            case '0':
+                            case 1:
                               echo "<span class='text-danger'> Hết hàng <span>";
                               break;
-                            case '1':
+                            case 2:
                               echo "<span class='text-success'> còn hàng </span>";
                               break;
                             default:

@@ -179,7 +179,8 @@
 		<div class="sidebar-inner slimscroll">
 			<div id="sidebar-menu" class="sidebar-menu">
 				<ul>
-					<li class="active">
+					<!-- <li class="active"> -->
+					<li>
 						<a href="../home/index.php"><i class="fas fa-columns"></i> <span>Dashboard</span></a>
 					</li>
 
